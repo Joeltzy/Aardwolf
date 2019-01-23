@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on Thursday, December 29, 2016, 11:46 PM -->
+<!-- MuClient version 0.00 -->
+<muclient>
+
+<plugin
+   name="autocast"
+   author="Unknown"
+   id="23fcc2bd23a8e33a9fd3fe1d"
+   language="Lua"
+   purpose="autocast"
+   date_written="2018-06-24 00:00:00"
+   save_state="y"
+   requires="4.72"
+   version="2.7"
+   >
+</plugin>
+
+<triggers>
+   <trigger
+      enabled="y"
+      match="^\[(.*)\] Your light does UNBELIEVABLE things to (.*)\! \[(.*)\]$"
+      regexp="y"
+      send_to="12"
+      sequence="100">
+   <send>
+      x = 1
+      autocast(x)
+   </send>
+   </trigger>
+
+   <trigger
+      enabled="y"
+      match="^siko\_prompt$"
+      regexp="y"
+      send_to="12"
+      sequence="100">
+   <send>
+      x = 0
+      autocast(x)
+   </send>
+   </trigger>
+</triggers>
+
+<timers>
+   <timer
+      name="autocastTimer"
+      second="4.8"
+      offset_second="0.00"
+      send_to="12">s
+   <send>
+      Send("hammering")
+   </send>
+   </timer>
+</timers>
+
+<!--  Script  -->
+<script>
+<![CDATA[
+
+function autocast (value)
+   if value == 1 then 
+      EnableTimer("autocastTimer", true)
+   elseif value == 0 then
+      EnableTimer("autocastTimer", false)
+   end
+end
+
+function displayautocasthelp()
+  ColourNote( "red", "black", "+", "white", "black", "--------------------------------------------------------------------", "red", "black", "+" )
+  ColourNote( "white", "black", "|", "ghostwhite", "black", "                       Zakum's autocast Plugin                       ", "white", "black", "|" )
+  ColourNote( "red", "black", "+", "white", "black", "--------------------------------------------------------------------", "red", "black", "+" )
+end
+
+function OnPluginInstall()
+  displayautocasthelp()
+end
+]]>
+</script>
+</muclient>
+
