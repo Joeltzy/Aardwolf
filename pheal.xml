@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on Thursday, December 29, 2016, 11:46 PM -->
+<!-- MuClient version 0.00 -->
+<muclient>
+
+<plugin
+   name="pheal"
+   author="Unknown"
+   id="23f2bd23cca8ea9fd3fe331d"
+   language="Lua"
+   purpose="pheal"
+   date_written="2018-06-24 00:00:00"
+   save_state="y"
+   requires="4.72"
+   version="2.7"
+   >
+</plugin>
+
+<aliases>
+   <alias
+      enabled="y"
+      match="pheal off"
+      regexp="y"
+      send_to="12"
+      sequence="100">
+   <send>
+      x = 0
+      pheal(x)
+   </send>
+   </alias>
+
+
+   <alias
+      enabled="y"
+      match="pheal on"
+      regexp="y"
+      send_to="12"
+      sequence="100">
+   <send>
+      x = 1
+      pheal(x)
+   </send>
+   </alias>
+</aliases>
+
+<timers>
+   <timer
+      name="phealtimer"
+      second="5.0"
+      offset_second="0.00"
+      send_to="12">s
+   <send>
+      Send("c 446")
+   </send>
+   </timer>
+</timers>
+
+<!--  Script  -->
+<script>
+<![CDATA[
+
+function pheal (value)
+   if value == 1 then 
+      EnableTimer("phealTimer", true)
+      ColourNote( "lightskyblue", "black", "[--> ", "ghostwhite", "black", "PHEAL ON", "lightskyblue", "black", " <--]")
+   elseif value == 0 then
+      EnableTimer("phealTimer", false)
+      ColourNote( "lightskyblue", "black", "[--> ", "ghostwhite", "black", "PHEAL OFF", "lightskyblue", "black", " <--]")      
+   end
+end
+
+function displayautocasthelp()
+  ColourNote( "red", "black", "+", "white", "black", "--------------------------------------------------------------------", "red", "black", "+" )
+  ColourNote( "white", "black", "|", "ghostwhite", "black", "                       Pheal timer                       ", "white", "black", "|" )
+  ColourNote( "red", "black", "+", "white", "black", "--------------------------------------------------------------------", "red", "black", "+" )
+end
+
+function OnPluginInstall()
+  displayautocasthelp()
+end
+]]>
+</script>
+</muclient>
+
