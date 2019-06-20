@@ -10,7 +10,7 @@ This plugin is a party heal toggle which have aliases to toggle/untoggle a timer
 4. Click `Add` and add the plugin `pheal.xml`.
 
 ## Windows
-All steps are smilar to Mac just that the command to bring up the Add/Remove plugins window is `shift ctrl p` instead.
+All steps are smilar to Mac just that the command to bring up the Add/Remove plugins window is `shift + ctrl + p` instead.
 
 ## Usage
 There are two aliases in the plugin. `pheal on` will start a timer to cast party heal every few seconds and `pheal off` will turn off the timer. 
