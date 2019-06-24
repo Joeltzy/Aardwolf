@@ -1,5 +1,5 @@
 ## Plugin Summary
-This plugin is a party heal toggle which have aliases to toggle/untoggle a timer for party heal.
+This plugin is a party heal toggle which have aliases to toggle/untoggle a timer for party heal to improve quality of life during epics or pups train.
 
 # Setting Up
 
